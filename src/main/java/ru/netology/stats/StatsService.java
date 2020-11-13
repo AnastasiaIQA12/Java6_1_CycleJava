@@ -17,40 +17,30 @@ public class StatsService {
         return averageSum;
     }
 
-    public int[] monthWithMaxSales(int[] sales) {
+    public int monthWithMaxSales(int[] sales) {
         long max = sales[0];
-        for (long sale : sales) {
-            if (sale > max) {
-                max = sale;
-            }
-        }
         int index = 0;
-        int[] month = new int[12];
-        int numberMonth = 0;
+        int month = 0;
         for (long sale : sales) {
-            if (sale == max) {
-                month[index++] = numberMonth;
+            if (sale >= max) {
+                max = sale;
+                month = index;
             }
-            numberMonth++;
+            index++;
         }
         return month;
     }
 
-    public int[] monthWithMinSales(int[] sales) {
+    public int monthWithMinSales(int[] sales) {
         long min = sales[0];
-        for (long sale : sales) {
-            if (sale < min) {
-                min = sale;
-            }
-        }
         int index = 0;
-        int[] month = new int[12];
-        int numberMonth = 0;
+        int month = 0;
         for (long sale : sales) {
-            if (sale == min) {
-                month[index++] = numberMonth;
+            if (sale <= min) {
+                min = sale;
+                month = index;
             }
-            numberMonth++;
+            index++;
         }
         return month;
     }
