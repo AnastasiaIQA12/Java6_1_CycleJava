@@ -17,7 +17,7 @@ class StatsServiceTest {
     void averageAmount() {
         int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         float expected = 15.0f;
-        float actual = service.averageAmount(sales);
+        float actual = service.averageAmount(sales, service);
         assertEquals(expected, actual);
     }
 
@@ -36,12 +36,11 @@ class StatsServiceTest {
         int actual = service.monthWithMinSales(sales);
         assertEquals(expected, actual);
     }
-
     @org.junit.jupiter.api.Test
     void countMonthUnderMiddle() {
         int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int expected = 5;
-        int actual = service.countMonthUnderMiddle(sales);
+        int actual = service.countMonthUnderMiddle(sales, service);
         assertEquals(expected, actual);
     }
 
@@ -49,7 +48,8 @@ class StatsServiceTest {
     void countMonthOverMiddle() {
         int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int expected = 5;
-        int actual = service.countMonthOverMiddle(sales);
+        int actual = service.countMonthOverMiddle(sales, service);
         assertEquals(expected, actual);
     }
+
 }
