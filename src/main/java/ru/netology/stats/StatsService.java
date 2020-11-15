@@ -10,7 +10,8 @@ public class StatsService {
         return sum;
     }
 
-    public float averageAmount(long sum) {
+    public float averageAmount(int[] sales) {
+        long sum = sumSales(sales);
         float averageSum = (float) sum / 12;
         return averageSum;
     }
@@ -42,8 +43,8 @@ public class StatsService {
         }
         return month;
     }
-
-    public int countMonthUnderMiddle(int[] sales,float averageSum) {
+    public int countMonthUnderMiddle(int[] sales) {
+        float averageSum = averageAmount(sales);
         int countMonth = 0;
         for (long sale : sales) {
             if (sale < averageSum) {
@@ -53,7 +54,8 @@ public class StatsService {
         return countMonth;
     }
 
-    public int countMonthOverMiddle(int[] sales, float averageSum) {
+    public int countMonthOverMiddle(int[] sales) {
+        float averageSum = averageAmount(sales);
         int countMonth = 0;
         for (long sale : sales) {
             if (sale > averageSum) {
@@ -62,5 +64,6 @@ public class StatsService {
         }
         return countMonth;
     }
+
 
 }
