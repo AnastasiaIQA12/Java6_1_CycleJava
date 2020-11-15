@@ -2,6 +2,7 @@ package ru.netology.stats;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 class StatsServiceTest {
     StatsService service = new StatsService();
 
@@ -16,8 +17,9 @@ class StatsServiceTest {
     @org.junit.jupiter.api.Test
     void averageAmount() {
         int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long sum = service.sumSales(sales);
+        float actual = service.averageAmount(sum);
         float expected = 15.0f;
-        float actual = service.averageAmount(sales, service);
         assertEquals(expected, actual);
     }
 
@@ -36,11 +38,14 @@ class StatsServiceTest {
         int actual = service.monthWithMinSales(sales);
         assertEquals(expected, actual);
     }
+
     @org.junit.jupiter.api.Test
     void countMonthUnderMiddle() {
         int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int expected = 5;
-        int actual = service.countMonthUnderMiddle(sales, service);
+        long sum = service.sumSales(sales);
+        float averageSum = service.averageAmount(sum);
+        int actual = service.countMonthUnderMiddle(sales, averageSum);
         assertEquals(expected, actual);
     }
 
@@ -48,8 +53,9 @@ class StatsServiceTest {
     void countMonthOverMiddle() {
         int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int expected = 5;
-        int actual = service.countMonthOverMiddle(sales, service);
+        long sum = service.sumSales(sales);
+        float averageSum = service.averageAmount(sum);
+        int actual = service.countMonthOverMiddle(sales, averageSum);
         assertEquals(expected, actual);
     }
-
 }
